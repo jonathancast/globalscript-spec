@@ -3,3 +3,7 @@ if (! whatis ok_diff_script >/dev/null >[2=1]) {
     exit 1
 }
 if not true
+
+fn test_non_existent_file {
+    ok_grep_errors '-- non-existent source file --' 'no-such-file.gs: Could not load' test_gsi_impl no-such-file.gs
+}
