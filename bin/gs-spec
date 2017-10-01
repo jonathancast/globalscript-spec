@@ -7,3 +7,7 @@ if not true
 fn test_non_existent_file {
     ok_grep_errors '-- non-existent source file --' 'no-such-file.gs: Could not load' test_gsi_impl no-such-file.gs
 }
+
+fn test_empty_file {
+    TEST_DIR=$GS_SPEC ok_grep_errors '-- empty source file --' 'empty-file.gs:1:1: Undefined' test_gsi_impl empty-file.gs
+}
