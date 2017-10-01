@@ -108,16 +108,17 @@ fn ok_grep_errors {
     shift; shift; shift; shift
     setup_todo $nm
     echo $nm $todo_msg
-    if ($prog ./test-gslib ./test-fixtures/$script $* > ./test-results/$script^-actual >[2] ./test-results/$script^-errors) {
+    if (~ $#TEST_DIR 0) TEST_DIR=.
+    if ($prog $TEST_DIR/test-gslib $TEST_DIR/test-fixtures/$script $* > $TEST_DIR/test-results/$script^-actual >[2] $TEST_DIR/test-results/$script^-errors) {
         echo $prog 'succeeded; should have failed' >[1=2]
-        cat ./test-results/$script^-errors >[1=2]
-        cat ./test-results/$script^-actual >[1=2]
+        cat $TEST_DIR/test-results/$script^-errors >[1=2]
+        cat $TEST_DIR/test-results/$script^-actual >[1=2]
         do_exit
     }
-    if (! 9 grep -s $msg ./test-results/$script^-errors) {
+    if (! 9 grep -s $msg $TEST_DIR/test-results/$script^-errors) {
         echo 'Can''t find expected error message '''^$msg^''' in output anywhere' >[1=2]
-        cat ./test-results/$script^-errors >[1=2]
-        cat ./test-results/$script^-actual >[1=2]
+        cat $TEST_DIR/test-results/$script^-errors >[1=2]
+        cat $TEST_DIR/test-results/$script^-actual >[1=2]
         do_exit
     }
     true
