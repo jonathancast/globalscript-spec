@@ -12,7 +12,7 @@ fn test_empty_file {
     TEST_DIR=$GS_SPEC ok_grep_errors '-- empty source file --' 'empty-file.gs:1:1: Undefined' test_gsi_impl empty-file.gs
 }
 
-fn test_unbound_file {
+fn test_unbound_variable {
     TEST_DIR=$GS_SPEC ok_grep_errors '-- variable not in scope --' 'foo not in scope' test_gsi_impl unbound-variable.gs
 }
 
