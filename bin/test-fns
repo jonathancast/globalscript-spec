@@ -37,23 +37,24 @@ fn ok_diff {
     shift; shift; shift
     setup_todo $nm
     echo $nm $todo_msg
-    if (! test -f ./test-results/$script^-expected) {
-        echo $prog $script ': no such file' ./test-results/$script^-expected >[1=2]
+    if (~ $#TEST_DIR 0) TEST_DIR=.
+    if (! test -f $TEST_DIR/test-results/$script^-expected) {
+        echo $prog $script ': no such file' $TEST_DIR/test-results/$script^-expected >[1=2]
         do_exit
     }
-    if (! $prog ./test-gslib ./test-gslib/$script $* > ./test-results/$script^-actual >[2] ./test-results/$script^-errors) {
+    if (! $prog $TEST_DIR/test-gslib $TEST_DIR/test-gslib/$script $* > $TEST_DIR/test-results/$script^-actual >[2] $TEST_DIR/test-results/$script^-errors) {
         echo $prog $script 'failed; should have succeeded' >[1=2]
-        cat ./test-results/$script^-errors >[1=2]
-        cat ./test-results/$script^-actual >[1=2]
+        cat $TEST_DIR/test-results/$script^-errors >[1=2]
+        cat $TEST_DIR/test-results/$script^-actual >[1=2]
         do_exit
     }
-    if (! diff ./test-results/$script^-actual ./test-results/$script^-expected) {
+    if (! diff $TEST_DIR/test-results/$script^-actual $TEST_DIR/test-results/$script^-expected) {
         echo $prog $script 'produced incorrect output' >[1=2]
         echo '--- Actual ---' >[1=2]
-        cat ./test-results/$script^-errors >[1=2]
-        cat ./test-results/$script^-actual >[1=2]
+        cat $TEST_DIR/test-results/$script^-errors >[1=2]
+        cat $TEST_DIR/test-results/$script^-actual >[1=2]
         echo '--- Expected ---' >[1=2]
-        cat ./test-results/$script^-expected
+        cat $TEST_DIR/test-results/$script^-expected
         do_exit
     }
     true
