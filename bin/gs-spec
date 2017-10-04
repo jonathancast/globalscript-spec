@@ -19,3 +19,7 @@ fn test_unbound_file {
 fn test_function_variable {
     TEST_DIR=$GS_SPEC ok_diff '-- function variable --' test_gsi_impl bare-gsmain.gsi.gs
 }
+
+fn test_undefined_variable {
+    TEST_DIR=$GS_SPEC ok_grep_errors '-- undefined variable --' 'undefined.gs:1:1: Undefined' test_gsi_impl undefined.gs
+}
