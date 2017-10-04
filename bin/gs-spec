@@ -13,9 +13,9 @@ fn test_empty_file {
 }
 
 fn test_unbound_file {
-    TEST_DIR=$GS_SPEC ok_grep_errors '-- variable not in scope --' 'foo not in scope' ./test-gsi unbound-variable.gs
+    TEST_DIR=$GS_SPEC ok_grep_errors '-- variable not in scope --' 'foo not in scope' test_gsi_impl unbound-variable.gs
 }
 
 fn test_function_variable {
-    TEST_DIR=$GS_SPEC ok_diff '-- function variable --' ./test-gsi bare-gsmain.gsi.gs
+    TEST_DIR=$GS_SPEC ok_diff '-- function variable --' test_gsi_impl bare-gsmain.gsi.gs
 }
