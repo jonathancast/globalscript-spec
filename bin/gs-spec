@@ -31,3 +31,7 @@ fn test_undefined_variable {
 fn test_function_application {
     TEST_DIR=$GS_SPEC ok_grep_errors '-- function application --' 'function-application.gs:1:1: Undefined' test_gsi_impl function-application.gs
 }
+
+fn test_function_literal {
+    TEST_DIR=$GS_SPEC ok_diff '-- function literal --' test_gsi_impl function-literal.gs
+}
