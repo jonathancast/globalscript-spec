@@ -35,3 +35,7 @@ fn test_function_application {
 fn test_function_literal {
     TEST_DIR=$GS_SPEC ok_diff '-- function literal --' test_gsi_impl function-literal.gs
 }
+
+fn test_value_function {
+    TEST_DIR=$GS_SPEC ok_diff '-- value function --' test_gsi_impl value-function.gs
+}
