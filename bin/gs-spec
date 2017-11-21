@@ -39,3 +39,7 @@ fn test_function_literal {
 fn test_value_function {
     TEST_DIR=$GS_SPEC ok_diff '-- value function --' test_gsi_impl value-function.gs
 }
+
+fn test_variable_function_body {
+    TEST_DIR=$GS_SPEC ok_diff '-- variable in function literal --' test_gsi_impl variable-function-body.gs
+}
