@@ -43,3 +43,7 @@ fn test_value_function {
 fn test_variable_function_body {
     TEST_DIR=$GS_SPEC ok_diff '-- variable in function literal --' test_gsi_impl variable-function-body.gs
 }
+
+fn test_analyze_undefined {
+    TEST_DIR=$GS_SPEC ok_grep_errors '-- analyze undefined --' 'analyze-undefined.gs:1:9: Undefined' test_gsi_impl analyze-undefined.gs
+}
