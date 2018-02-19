@@ -16,6 +16,10 @@ fn test_comment {
     TEST_DIR=$GS_SPEC ok_grep_errors '-- single-line comment --' 'single-line-comment.gs:1:1: Undefined' test_gsi_impl single-line-comment.gs
 }
 
+fn test_number {
+    TEST_DIR=$GS_SPEC ok_diff '-- numeric literal --' test_gsi_impl numeric-literal.gs
+}
+
 fn test_unbound_variable {
     TEST_DIR=$GS_SPEC ok_grep_errors '-- variable not in scope --' 'foo not in scope' test_gsi_impl unbound-variable.gs
 }
