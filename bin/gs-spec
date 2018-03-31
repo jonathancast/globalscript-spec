@@ -25,7 +25,7 @@ fn test_unbound_variable {
 }
 
 fn test_function_variable {
-    TEST_DIR=$GS_SPEC ok_diff '-- function variable --' test_gsi_impl bare-gsmain.gsi.gs
+    TEST_DIR=$GS_SPEC ok_diff '-- function variable --' test_gsi_impl function-variable.gsi.gs
 }
 
 fn test_undefined_variable {
