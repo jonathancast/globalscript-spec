@@ -67,3 +67,7 @@ fn test_view_pattern {
 fn test_view_pattern_hsgs_syntax {
     TEST_DIR=$GS_SPEC ok_diff '-- view patterns --' test_gsi_impl view-patterns-hsgs-syntax.gs
 }
+
+fn test_view_pattern_arg_hsgs_syntax {
+    TEST_DIR=$GS_SPEC ok_diff '-- view patterns with arguments --' test_gsi_impl view-patterns-arg-hsgs-syntax.gs
+}
