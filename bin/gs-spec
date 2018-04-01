@@ -64,6 +64,10 @@ fn test_discard_pattern_hsgs_syntax {
     TEST_DIR=$GS_SPEC ok_diff '-- discard patterns --' test_gsi_impl discard-patterns-hsgs-syntax.gs
 }
 
+fn test_variable_pattern_hsgs_syntax {
+    TEST_DIR=$GS_SPEC ok_diff '-- variable patterns --' test_gsi_impl variable-patterns-hsgs-syntax.gs
+}
+
 fn test_view_pattern {
     TEST_DIR=$GS_SPEC ok_diff '-- view patterns --' test_gsi_impl view-patterns.gs
 }
