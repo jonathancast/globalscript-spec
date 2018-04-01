@@ -60,6 +60,10 @@ fn test_analyze_undefined {
     TEST_DIR=$GS_SPEC ok_grep_errors '-- analyze undefined --' 'analyze-undefined.gs:1:9: Undefined' test_gsi_impl analyze-undefined.gs
 }
 
+fn test_discard_pattern_hsgs_syntax {
+    TEST_DIR=$GS_SPEC ok_diff '-- discard patterns --' test_gsi_impl discard-patterns-hsgs-syntax.gs
+}
+
 fn test_view_pattern {
     TEST_DIR=$GS_SPEC ok_diff '-- view patterns --' test_gsi_impl view-patterns.gs
 }
