@@ -63,3 +63,7 @@ fn test_analyze_undefined {
 fn test_view_pattern {
     TEST_DIR=$GS_SPEC ok_diff '-- view patterns --' test_gsi_impl view-patterns.gs
 }
+
+fn test_view_pattern_hsgs_syntax {
+    TEST_DIR=$GS_SPEC ok_diff '-- view patterns --' test_gsi_impl view-patterns-hsgs-syntax.gs
+}
