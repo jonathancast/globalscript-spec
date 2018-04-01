@@ -1,1 +1,1 @@
-λ 'x. gsmain
+λ 'x. map
