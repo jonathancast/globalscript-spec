@@ -20,6 +20,10 @@ fn test_number {
     TEST_DIR=$GS_SPEC ok_diff '-- numeric literal --' test_gsi_impl numeric-literal.gs
 }
 
+fn test_qq_literal {
+    TEST_DIR=$GS_SPEC ok_diff '-- qq literals --' test_gsi_impl qq-literal.gs
+}
+
 fn test_unbound_variable {
     TEST_DIR=$GS_SPEC ok_grep_errors '-- variable not in scope --' 'foo not in scope' test_gsi_impl unbound-variable.gs
 }
