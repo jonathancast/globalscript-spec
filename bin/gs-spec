@@ -48,6 +48,10 @@ fn test_infix_operator {
     TEST_DIR=$GS_SPEC ok_diff '-- infix operator --' test_gsi_impl infix-operator.gs
 }
 
+fn test_infix_with_explicit {
+    TEST_DIR=$GS_SPEC ok_diff '-- infix operator with explicit argument --' test_gsi_impl infix-operator-explicit.gs
+}
+
 fn test_function_literal {
     TEST_DIR=$GS_SPEC ok_diff '-- function literal --' test_gsi_impl function-literal.gs
 }
