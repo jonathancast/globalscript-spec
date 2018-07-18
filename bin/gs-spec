@@ -24,6 +24,10 @@ fn test_qq_literal {
     TEST_DIR=$GS_SPEC ok_diff '-- qq literals --' test_gsi_impl qq-literal.gs
 }
 
+fn test_empty_structure_literal {
+    TEST_DIR=$GS_SPEC ok_diff '-- empty structure literals --' test_gsi_impl empty-structure-literal.gs
+}
+
 fn test_unbound_variable {
     TEST_DIR=$GS_SPEC ok_grep_errors '-- variable not in scope --' 'foo not in scope' test_gsi_impl unbound-variable.gs
 }
