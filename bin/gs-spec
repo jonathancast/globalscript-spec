@@ -68,6 +68,10 @@ fn test_parameter_shadows_global_variable {
     TEST_DIR=$GS_SPEC ok_grep_errors '-- parameter shadows global variable --' 'parameter-shadows.gs:1:12: gsmain is already in scope' test_gsi_impl parameter-shadows.gs
 }
 
+fn test_parameter_shadows_parameter {
+    TEST_DIR=$GS_SPEC ok_grep_errors '-- parameter shadows parameter --' 'parameter-shadows-parameter.gs:1:13: x is already in scope' test_gsi_impl parameter-shadows-parameter.gs
+}
+
 fn test_variable_function_body {
     TEST_DIR=$GS_SPEC ok_diff '-- variable in function literal --' test_gsi_impl variable-function-body.gs
 }
