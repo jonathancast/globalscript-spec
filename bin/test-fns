@@ -224,6 +224,8 @@ fn ok_diff_compiler {
     shift; shift; shift; shift
     setup_todo $nm
     echo $nm $todo_msg
+    prog=$cmd
+    if (test -x ./$prog) prog=./$prog
     if (! test -f ./test-fixtures/$input) {
         echo $cmd $input ': no such file' ./test-fixtures/$input >[1=2]
         do_exit
@@ -232,9 +234,9 @@ fn ok_diff_compiler {
         echo $cmd $input ': no such file' ./test-results/$cmd^-^$input^-expected >[1=2]
         do_exit
     }
-    if (! ./$cmd ./test-fixtures/$input > ./test-results/$cmd^-^$input^-errors >[2=1]) {
+    if (! $prog ./test-fixtures/$input > ./test-results/$cmd^-^$input^-errors >[2=1]) {
         echo 'The command ' >[1=2]
-        echo '    ' $cmd ./test-fixtures/$input >[1=2]
+        echo '    '^$prog ./test-fixtures/$input >[1=2]
         echo 'failed; should have succeeded' >[1=2]
         cat ./test-results/$cmd^-^$input^-errors
         do_exit
