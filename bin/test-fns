@@ -226,6 +226,7 @@ fn ok_diff_compiler {
     echo $nm $todo_msg
     prog=$cmd
     if (test -x ./$prog) prog=./$prog
+    if (~ $output .*) output=`{echo $input | sed 's/\..*$/'^$output^'/'}
     if (! test -f ./test-fixtures/$input) {
         echo $cmd $input ': no such file' ./test-fixtures/$input >[1=2]
         do_exit
