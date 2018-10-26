@@ -1,0 +1,9 @@
+if (! whatis ok_diff_script >/dev/null >[2=1]) {
+    echo 'You must load $GS_SPEC/bin/test-fns before loading $GS_SPEC/bin/gs-spec' >[1=2]
+    exit 1
+}
+if not true
+
+fn test_hsgs_empty_file {
+    TEST_DIR=$GS_SPEC ok_diff_compiler '-- empty file --' hsgs2hs empty-file.hsgs .hs
+}
