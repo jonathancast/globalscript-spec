@@ -1,0 +1,2 @@
+{-# LINE 1 "./test-fixtures/haskell-interp.hsgs" #-}
+$gslambda_value $ \ gsrun -> $gsbcimpfor $ do

@@ -19,3 +19,7 @@ fn test_hsgs_empty_directory {
 fn test_hsgs_no_interpolations {
     TEST_DIR=$GS_SPEC ok_diff_compiler '-- single line, no interpolations --' hsgs2hs single-line.hsgs .hs
 }
+
+fn test_hsgs_haskell_interpolation {
+    TEST_DIR=$GS_SPEC ok_diff_compiler '-- regular Haskell interpolation --' hsgs2hs haskell-interp.hsgs haskell-interp.hs
+}
