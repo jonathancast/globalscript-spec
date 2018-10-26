@@ -23,3 +23,7 @@ fn test_hsgs_no_interpolations {
 fn test_hsgs_haskell_interpolation {
     TEST_DIR=$GS_SPEC ok_diff_compiler '-- regular Haskell interpolation --' hsgs2hs haskell-interp.hsgs .hs
 }
+
+fn test_hsgs_normal_bracket {
+    TEST_DIR=$GS_SPEC ok_diff_compiler '-- normal square brackets --' hsgs2hs normal-bracket.hsgs normal-bracket.hs
+}
