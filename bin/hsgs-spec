@@ -21,5 +21,5 @@ fn test_hsgs_no_interpolations {
 }
 
 fn test_hsgs_haskell_interpolation {
-    TEST_DIR=$GS_SPEC ok_diff_compiler '-- regular Haskell interpolation --' hsgs2hs haskell-interp.hsgs haskell-interp.hs
+    TEST_DIR=$GS_SPEC ok_diff_compiler '-- regular Haskell interpolation --' hsgs2hs haskell-interp.hsgs .hs
 }
