@@ -225,31 +225,37 @@ fn ok_diff_compiler {
     setup_todo $nm
     echo $nm $todo_msg
     prog=$cmd
-    if (test -x ./$prog) prog=./$prog
+    if (~ $#TEST_DIR 0) TEST_DIR=.
+    if (test -x ./$prog) prog=`{pwd}^/$prog
     if (~ $output .*) output=`{echo $input | sed 's/\..*$/'^$output^'/'}
+    oldpwd=`{pwd}
+    cd $TEST_DIR
+    rm -f ./test-fixtures/$output
     if (! test -f ./test-fixtures/$input) {
-        echo $cmd $input ': no such file' ./test-fixtures/$input >[1=2]
+        echo $cmd $input ': no such file' $TEST_DIR/test-fixtures/$input >[1=2]
         do_exit
     }
     if (! test -f ./test-results/$cmd^-^$input^-expected) {
-        echo $cmd $input ': no such file' ./test-results/$cmd^-^$input^-expected >[1=2]
+        echo $cmd $input ': no such file' $TEST_DIR/test-results/$cmd^-^$input^-expected >[1=2]
         do_exit
     }
     if (! $prog ./test-fixtures/$input > ./test-results/$cmd^-^$input^-errors >[2=1]) {
         echo 'The command ' >[1=2]
-        echo '    '^$prog ./test-fixtures/$input >[1=2]
+        echo '    '^$prog $TEST_DIR/test-fixtures/$input >[1=2]
         echo 'failed; should have succeeded' >[1=2]
         cat ./test-results/$cmd^-^$input^-errors
         do_exit
     }
     if (! diff ./test-fixtures/$output ./test-results/$cmd^-^$input^-expected >/dev/null) {
         echo 'Incorrect output:' >[1=2]
+        cat ./test-fixtures/$output >[1=2]
         echo '--- Any errors: ---' >[1=2]
         cat ./test-results/$cmd^-^$input^-errors >[1=2]
         echo '--- Diff: ---' >[1=2]
-        diff -c ./test-fixtures/$output ./test-results/$cmd^-^$input^-expected >[1=2] || true
+        diff -c $TEST_DIR/test-fixtures/$output $TEST_DIR/test-results/$cmd^-^$input^-expected >[1=2] || true
         do_exit
     }
+    cd $oldpwd
     true
 }
 
