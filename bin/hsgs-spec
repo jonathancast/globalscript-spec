@@ -11,3 +11,7 @@ fn test_hsgs_empty_file {
 fn test_hsgs_non_existent_directory {
     ok_grep_script_errors '-- non-existent directory --' 'no-such-dir' 'no-such-dir: Could not load' ./hsgs2hs $GS_SPEC/test-fixtures/no-such-dir
 }
+
+fn test_hsgs_empty_directory {
+    ok_script '-- empty directory --' hsgs2hs-empty ./hsgs2hs $GS_SPEC/test-fixtures/empty-dir
+}
