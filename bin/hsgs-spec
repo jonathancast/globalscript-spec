@@ -15,3 +15,7 @@ fn test_hsgs_non_existent_directory {
 fn test_hsgs_empty_directory {
     ok_script '-- empty directory --' hsgs2hs-empty ./hsgs2hs $GS_SPEC/test-fixtures/empty-dir
 }
+
+fn test_hsgs_no_interpolations {
+    TEST_DIR=$GS_SPEC ok_diff_compiler '-- single line, no interpolations --' hsgs2hs single-line.hsgs single-line.hs
+}
