@@ -31,3 +31,7 @@ fn test_hsgs_normal_bracket {
 fn test_hsgs_comments {
     TEST_DIR=$GS_SPEC ok_diff_compiler '-- comments --' hsgs2hs comment.hsgs .hs
 }
+
+fn test_hsgs_variable_expressions {
+    TEST_DIR=$GS_SPEC ok_diff_compiler '-- expression variables --' hsgs2hs variable-expression.hsgs variable-expression.hs
+}
