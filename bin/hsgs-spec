@@ -45,5 +45,5 @@ fn test_hsgs_variable_binds {
 }
 
 fn test_hsgs_exec_binds {
-    TEST_DIR=$GS_SPEC ok_diff_compiler '-- exec binds --' hsgs2hs exec-bind-impfor.hsgs exec-bind-impfor.hs
+    TEST_DIR=$GS_SPEC ok_diff_compiler '-- exec binds --' hsgs2hs exec-bind-impfor.hsgs .hs
 }
