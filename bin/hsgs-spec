@@ -43,3 +43,7 @@ fn test_hsgs_variable_bodies {
 fn test_hsgs_variable_binds {
     TEST_DIR=$GS_SPEC ok_diff_compiler '-- variable bind RHSs --' hsgs2hs variable-bind.hsgs .hs
 }
+
+fn test_hsgs_exec_binds {
+    TEST_DIR=$GS_SPEC ok_diff_compiler '-- exec binds --' hsgs2hs exec-bind-impfor.hsgs exec-bind-impfor.hs
+}
