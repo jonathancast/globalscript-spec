@@ -51,3 +51,7 @@ fn test_hsgs_exec_binds {
 fn test_hsgs_application_values {
     TEST_DIR=$GS_SPEC ok_diff_compiler '-- values (thunks) --' hsgs2hs application-value.hsgs .hs
 }
+
+fn test_hsgs_variable_declarations {
+    TEST_DIR=$GS_SPEC ok_diff_compiler '-- variable declarations --' hsgs2hs variable-decl.hsgs variable-decl.hs
+}
