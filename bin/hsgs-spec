@@ -33,5 +33,5 @@ fn test_hsgs_comments {
 }
 
 fn test_hsgs_variable_expressions {
-    TEST_DIR=$GS_SPEC ok_diff_compiler '-- expression variables --' hsgs2hs variable-expression.hsgs variable-expression.hs
+    TEST_DIR=$GS_SPEC ok_diff_compiler '-- expression variables --' hsgs2hs variable-expression.hsgs .hs
 }
