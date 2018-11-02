@@ -119,3 +119,7 @@ fn test_view_pattern_operator_hsgs_syntax {
 fn test_expression_application_syntax {
     TEST_DIR=$GS_SPEC ok_diff '-- expression applications --' test_gsi_impl application-expression.gs
 }
+
+fn test_case_hsgs_syntax {
+    TEST_DIR=$GS_SPEC ok_diff '-- analyze expressions --' test_gsi_impl analyze-expression.gs
+}
