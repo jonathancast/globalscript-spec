@@ -267,11 +267,11 @@ fn ok_diff_compiled {
     echo $nm $todo_msg
     output=`{echo $input | sed 's/\..*$/'^$outext^'/'}
     if (! test -f ./test-fixtures/$input) {
-        echo $cmd $input ': no such file' ./test-fixtures/$input >[1=2]
+        echo $cmd $input^': no such file' ./test-fixtures/$input >[1=2]
         do_exit
     }
     if (! test -f ./test-results/$cmd^-^$input^-expected) {
-        echo $cmd $input ': no such file' ./test-results/$cmd^-^$input^-expected >[1=2]
+        echo $cmd $input^': no such file' ./test-results/$cmd^-^$input^-expected >[1=2]
         do_exit
     }
     rm -f ./test-fixtures/$output ./test-results/$cmd^-^$input^-actual ./test-results/$cmd^-^$input^-errors
