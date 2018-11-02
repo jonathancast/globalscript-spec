@@ -123,3 +123,7 @@ fn test_expression_application_syntax {
 fn test_case_hsgs_syntax {
     TEST_DIR=$GS_SPEC ok_diff '-- analyze expressions --' test_gsi_impl analyze-expression.gs
 }
+
+fn test_for_variable {
+    TEST_DIR=$GS_SPEC ok_diff '-- for expressions --' test_gsi_impl variable-for.gs
+}
