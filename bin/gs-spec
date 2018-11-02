@@ -131,3 +131,7 @@ fn test_for_variable {
 fn test_lexical_variable_hsgs_syntax {
     TEST_DIR=$GS_SPEC ok_diff '-- case expressions where the pattern-bound variables are used --' test_gsi_impl lexical-variable.gs
 }
+
+fn test_record_literal_field {
+    TEST_DIR=$GS_SPEC ok_diff '-- Record literals with fields --' test_gsi_impl record-literal-field.gs
+}
