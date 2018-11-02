@@ -39,7 +39,7 @@ fn ok_diff {
     echo $nm $todo_msg
     if (~ $#TEST_DIR 0) TEST_DIR=.
     if (! test -f $TEST_DIR/test-results/$script^-expected) {
-        echo $prog $script ': no such file' $TEST_DIR/test-results/$script^-expected >[1=2]
+        echo $prog $script^': no such file' $TEST_DIR/test-results/$script^-expected >[1=2]
         do_exit
     }
     if (! $prog $TEST_DIR/test-gslib $TEST_DIR/test-gslib/$script $* > $TEST_DIR/test-results/$script^-actual >[2] $TEST_DIR/test-results/$script^-errors) {
