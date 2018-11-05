@@ -139,3 +139,7 @@ fn test_record_literal_field {
 fn test_field_extraction {
     TEST_DIR=$GS_SPEC ok_diff '-- field extractions --' test_gsi_impl field-extraction.gs
 }
+
+fn test_prefix_operators {
+    TEST_DIR=$GS_SPEC ok_diff '-- prefix operators --' test_gsi_impl prefix-expression.gs
+}
