@@ -135,3 +135,7 @@ fn test_lexical_variable_hsgs_syntax {
 fn test_record_literal_field {
     TEST_DIR=$GS_SPEC ok_diff '-- record literals with fields --' test_gsi_impl record-literal-field.gs
 }
+
+fn test_field_extraction {
+    TEST_DIR=$GS_SPEC ok_diff '-- field extractions --' test_gsi_impl field-extraction.gs
+}
