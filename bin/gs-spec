@@ -159,3 +159,7 @@ fn test_natural_number_addition {
 fn test_list_addition {
     TEST_DIR=$GS_SPEC ok_diff '-- lists --' test_gsi_impl list-addition.gs
 }
+
+fn test_non_associative_operators {
+    TEST_DIR=$GS_SPEC ok_diff '-- non-associative operators --' test_gsi_impl inequality.gs
+}
