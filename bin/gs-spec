@@ -147,3 +147,7 @@ fn test_prefix_operators {
 fn test_monadic_generators {
     TEST_DIR=$GS_SPEC ok_diff '-- monadic generators --' test_gsi_impl either-for-generator.gs
 }
+
+fn test_monadic_bind_generators {
+    TEST_DIR=$GS_SPEC ok_diff '-- monadic bind generators --' test_gsi_impl either-for-bind-generator.gs
+}
