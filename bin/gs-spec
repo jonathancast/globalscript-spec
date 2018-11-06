@@ -155,3 +155,7 @@ fn test_monadic_bind_generators {
 fn test_natural_number_addition {
     TEST_DIR=$GS_SPEC ok_diff '-- additions --' test_gsi_impl natural-addition.gs
 }
+
+fn test_list_addition {
+    TEST_DIR=$GS_SPEC ok_diff '-- lists --' test_gsi_impl list-addition.gs
+}
