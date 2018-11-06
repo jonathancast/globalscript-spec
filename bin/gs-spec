@@ -143,3 +143,7 @@ fn test_field_extraction {
 fn test_prefix_operators {
     TEST_DIR=$GS_SPEC ok_diff '-- prefix operators --' test_gsi_impl prefix-expression.gs
 }
+
+fn test_monadic_generators {
+    TEST_DIR=$GS_SPEC ok_diff '-- monadic generators --' test_gsi_impl either-for-generator.gs
+}
