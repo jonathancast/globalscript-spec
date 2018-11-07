@@ -171,3 +171,7 @@ fn test_parenthesized_operators {
 fn test_qq_literal {
     TEST_DIR=$GS_SPEC ok_diff '-- qq literals --' test_gsi_impl qq-literal.gs
 }
+
+fn test_qq_newline {
+    TEST_DIR=$GS_SPEC ok_diff '-- \n in qq literals --' test_gsi_impl qq-newline.gs
+}
