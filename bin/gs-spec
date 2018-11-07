@@ -167,3 +167,7 @@ fn test_non_associative_operators {
 fn test_right_associative_operators {
     TEST_DIR=$GS_SPEC ok_diff '-- right-associative operators --' test_gsi_impl cons.gs
 }
+
+fn test_parenthesized_operators {
+    TEST_DIR=$GS_SPEC ok_diff '-- operator names --' test_gsi_impl operator-name.gs
+}
