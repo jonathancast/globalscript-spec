@@ -20,10 +20,6 @@ fn test_number {
     TEST_DIR=$GS_SPEC ok_diff '-- numeric literal --' test_gsi_impl numeric-literal.gs
 }
 
-fn test_qq_literal {
-    TEST_DIR=$GS_SPEC ok_diff '-- qq literals --' test_gsi_impl qq-literal.gs
-}
-
 fn test_empty_structure_literal {
     TEST_DIR=$GS_SPEC ok_diff '-- empty structure literals --' test_gsi_impl empty-structure-literal.gs
 }
@@ -170,4 +166,8 @@ fn test_right_associative_operators {
 
 fn test_parenthesized_operators {
     TEST_DIR=$GS_SPEC ok_diff '-- operator names --' test_gsi_impl operator-name.gs
+}
+
+fn test_qq_literal {
+    TEST_DIR=$GS_SPEC ok_diff '-- qq literals --' test_gsi_impl qq-literal.gs
 }
