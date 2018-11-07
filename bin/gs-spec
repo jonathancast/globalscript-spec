@@ -163,3 +163,7 @@ fn test_list_addition {
 fn test_non_associative_operators {
     TEST_DIR=$GS_SPEC ok_diff '-- non-associative operators --' test_gsi_impl inequality.gs
 }
+
+fn test_right_associative_operators {
+    TEST_DIR=$GS_SPEC ok_diff '-- right-associative operators --' test_gsi_impl cons.gs
+}
