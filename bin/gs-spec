@@ -175,3 +175,7 @@ fn test_qq_literal {
 fn test_qq_newline {
     TEST_DIR=$GS_SPEC ok_diff '-- \n in qq literals --' test_gsi_impl qq-newline.gs
 }
+
+fn test_qq_interpolation {
+    TEST_DIR=$GS_SPEC ok_diff '-- interpolations in qq literals --' test_gsi_impl qq-interpolation.gs
+}
