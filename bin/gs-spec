@@ -12,8 +12,16 @@ fn test_empty_file {
     TEST_DIR=$GS_SPEC ok_grep_errors '-- empty source file --' 'empty-file.gs:1:1: Undefined' test_gsi_impl empty-file.gs
 }
 
+fn test_gscalc_empty_file {
+    TEST_DIR=$GS_SPEC ok_grep '-- empty source file --' 'empty-file.gs:1:1: Undefined' test_gsi_impl empty-file.gs
+}
+
 fn test_comment {
     TEST_DIR=$GS_SPEC ok_grep_errors '-- single-line comment --' 'single-line-comment.gs:1:1: Undefined' test_gsi_impl single-line-comment.gs
+}
+
+fn test_gscalc_comment {
+    TEST_DIR=$GS_SPEC ok_grep '-- single-line comment --' 'single-line-comment.gs:1:1: Undefined' test_gsi_impl single-line-comment.gs
 }
 
 fn test_number {
@@ -36,12 +44,20 @@ fn test_undefined_variable {
     TEST_DIR=$GS_SPEC ok_grep_errors '-- undefined variable --' 'undefined.gs:1:1: Undefined' test_gsi_impl undefined.gs
 }
 
+fn test_gscalc_undefined_variable {
+    TEST_DIR=$GS_SPEC ok_grep '-- undefined variable --' 'undefined.gs:1:1: Undefined' test_gsi_impl undefined.gs
+}
+
 fn test_where_clause {
     TEST_DIR=$GS_SPEC ok_diff '-- where clause --' test_gsi_impl where-clause.gs
 }
 
 fn test_function_application {
     TEST_DIR=$GS_SPEC ok_grep_errors '-- function application --' 'function-application.gs:1:1: Undefined' test_gsi_impl function-application.gs
+}
+
+fn test_gscalc_function_application {
+    TEST_DIR=$GS_SPEC ok_grep '-- function application --' 'function-application.gs:1:1: Undefined' test_gsi_impl function-application.gs
 }
 
 fn test_infix_operator {
@@ -78,6 +94,10 @@ fn test_parameter_function_body {
 
 fn test_analyze_undefined {
     TEST_DIR=$GS_SPEC ok_grep_errors '-- analyze undefined --' 'analyze-undefined.gs:1:9: Undefined' test_gsi_impl analyze-undefined.gs
+}
+
+fn test_gscalc_analyze_undefined {
+    TEST_DIR=$GS_SPEC ok_grep '-- analyze undefined --' 'analyze-undefined.gs:1:9: Undefined' test_gsi_impl analyze-undefined.gs
 }
 
 fn test_discard_pattern {
@@ -178,4 +198,8 @@ fn test_qq_newline {
 
 fn test_qq_interpolation {
     TEST_DIR=$GS_SPEC ok_diff '-- interpolations in qq literals --' test_gsi_impl qq-interpolation.gs
+}
+
+fn test_error_function {
+    ok_grep_errors '-- error function --' 'error-call.gs:1: foo' test_gsi_impl error-call.gs
 }
