@@ -125,6 +125,27 @@ fn ok_grep_errors {
     true
 }
 
+fn ok_grep {
+    nm=$1; msg=$2; prog=$3; script=$4
+    shift; shift; shift; shift
+    setup_todo $nm
+    echo $nm $todo_msg
+    if (~ $#TEST_DIR 0) TEST_DIR=.
+    if (! $prog $TEST_DIR/test-gslib $TEST_DIR/test-fixtures/$script $* > $TEST_DIR/test-results/$script^-actual >[2] $TEST_DIR/test-results/$script^-errors) {
+        echo $prog 'faild; should have succeeded' >[1=2]
+        cat $TEST_DIR/test-results/$script^-errors >[1=2]
+        cat $TEST_DIR/test-results/$script^-actual >[1=2]
+        do_exit
+    }
+    if (! 9 grep -s $msg $TEST_DIR/test-results/$script^-actual) {
+        echo 'Can''t find expected error message '''^$msg^''' in output anywhere' >[1=2]
+        cat $TEST_DIR/test-results/$script^-errors >[1=2]
+        cat $TEST_DIR/test-results/$script^-actual >[1=2]
+        do_exit
+    }
+    true
+}
+
 fn ok_script {
     nm=$1; casenm=$2
     shift; shift
