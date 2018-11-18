@@ -48,6 +48,10 @@ fn test_gscalc_undefined_variable {
     TEST_DIR=$GS_SPEC ok_grep '-- undefined variable --' 'undefined.gs:1:1: Undefined' test_gsi_impl undefined.gs
 }
 
+fn test_gscalc_error_function {
+    ok_grep '-- error function --' 'error-call.gs:1: foo' test_gsi_impl error-call.gs
+}
+
 fn test_where_clause {
     TEST_DIR=$GS_SPEC ok_diff '-- where clause --' test_gsi_impl where-clause.gs
 }
