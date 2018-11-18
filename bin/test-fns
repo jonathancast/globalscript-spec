@@ -228,7 +228,7 @@ fn ok_grep_script_errors {
         cat ./test-results/$casenm^-actual >[1=2]
         exit 1
     }
-    if (! grep -s $msg ./test-results/$casenm^-errors) {
+    if (! 9 grep -s $msg ./test-results/$casenm^-errors) {
         echo 'The command' >[1=2]
         echo '    ' $* >[1=2]
         echo 'produced the wrong output' >[1=2]
