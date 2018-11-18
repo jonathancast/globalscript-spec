@@ -203,7 +203,3 @@ fn test_qq_newline {
 fn test_qq_interpolation {
     TEST_DIR=$GS_SPEC ok_diff '-- interpolations in qq literals --' test_gsi_impl qq-interpolation.gs
 }
-
-fn test_error_function {
-    ok_grep_errors '-- error function --' 'error-call.gs:1: foo' test_gsi_impl error-call.gs
-}
