@@ -48,7 +48,7 @@ fn ok_diff {
         cat $TEST_DIR/test-results/$script^-actual >[1=2]
         do_exit
     }
-    if (! diff $TEST_DIR/test-results/$script^-actual $TEST_DIR/test-results/$script^-expected) {
+    if (! 9 diff $TEST_DIR/test-results/$script^-actual $TEST_DIR/test-results/$script^-expected) {
         echo $prog $script 'produced incorrect output' >[1=2]
         echo '--- Actual ---' >[1=2]
         cat $TEST_DIR/test-results/$script^-errors >[1=2]
