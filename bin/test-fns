@@ -7,7 +7,7 @@ fn setup_todo {
         }
     }
     if (~ $#TODO 0) {
-        fn do_exit { exit 1 }
+        fn do_exit { if (! ~ $#* 0) cd $1; exit 1 }
         todo_msg=()
     }
     if not {
@@ -254,18 +254,18 @@ fn ok_diff_compiler {
     rm -f ./test-fixtures/$output
     if (! test -f ./test-fixtures/$input) {
         echo $cmd $input^': no such file' $TEST_DIR/test-fixtures/$input >[1=2]
-        do_exit
+        do_exit $oldpwd
     }
     if (! test -f ./test-results/$cmd^-^$input^-expected) {
         echo $cmd $input^': no such file' $TEST_DIR/test-results/$cmd^-^$input^-expected >[1=2]
-        do_exit
+        do_exit $oldpwd
     }
     if (! $prog ./test-fixtures/$input > ./test-results/$cmd^-^$input^-errors >[2=1]) {
         echo 'The command ' >[1=2]
         echo '    '^$prog $TEST_DIR/test-fixtures/$input >[1=2]
         echo 'failed; should have succeeded' >[1=2]
         cat ./test-results/$cmd^-^$input^-errors
-        do_exit
+        do_exit $oldpwd
     }
     if (! diff ./test-fixtures/$output ./test-results/$cmd^-^$input^-expected >/dev/null) {
         echo 'Incorrect output:' >[1=2]
@@ -274,7 +274,7 @@ fn ok_diff_compiler {
         cat ./test-results/$cmd^-^$input^-errors >[1=2]
         echo '--- Diff: ---' >[1=2]
         diff -c $TEST_DIR/test-fixtures/$output $TEST_DIR/test-results/$cmd^-^$input^-expected >[1=2] || true
-        do_exit
+        do_exit $oldpwd
     }
     cd $oldpwd
     true
