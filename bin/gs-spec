@@ -203,3 +203,7 @@ fn test_qq_newline {
 fn test_qq_interpolation {
     TEST_DIR=$GS_SPEC ok_diff '-- interpolations in qq literals --' test_gsi_impl qq-interpolation.gs
 }
+
+fn test_qq_pattern_hsgs_syntax {
+    TEST_DIR=$GS_SPEC ok_diff '-- qq literal patterns --' test_gsi_impl qq-literal-pattern.gs
+}
