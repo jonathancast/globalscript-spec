@@ -211,3 +211,7 @@ fn test_qq_pattern_hsgs_syntax {
 fn test_qq_pattern_quoted_bracket_hsgs_syntax {
     TEST_DIR=$GS_SPEC ok_diff '-- escaped bracket in qq literal patterns --' test_gsi_impl qq-pattern-escaped-bracket.gs
 }
+
+fn test_qq_pattern_interpolation_hsgs_syntax {
+    TEST_DIR=$GS_SPEC ok_diff '-- terminal interpolation in qq literal patterns --' test_gsi_impl qq-pattern-interpolation.gs
+}
