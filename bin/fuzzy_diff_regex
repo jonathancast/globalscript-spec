@@ -1,0 +1,37 @@
+#! /usr/bin/perl
+
+use strict;
+use warnings;
+
+# Line by line fuzzy matcher
+
+my ($file1, $file2) = @ARGV;
+
+open my $fh1, '<', $file1 or die "Can't open $file1: $!";
+open my $fh2, '<', $file2 or die "Can't open $file2: $!";
+
+my $failed = !1;
+
+my ($line1, $line2);
+
+while (($line1 = <$fh1>), ($line2 = <$fh2>), defined($line1) || defined($line2)) {
+    my $loc = "$file1:$. - $file2:$.\n";
+    if (!defined($line1)) {
+        $failed = 1;
+        print $loc;
+        print "- EOF\n";
+        print "+ $line2";
+    } elsif (!defined($line2)) {
+        $failed = 1;
+        print $loc;
+        print "- $line1";
+        print "+ EOF\n";
+    } elsif ($line1 !~ m/$line2/) {
+        $failed = 1;
+        print $loc;
+        print "- $line1";
+        print "+ $line2";
+    }
+}
+
+exit $failed ? 0 : 1;

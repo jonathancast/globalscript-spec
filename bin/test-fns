@@ -321,3 +321,45 @@ fn ok_diff_compiled {
     }
     true
 }
+
+fn ok_fuzzy_diff_regex_compiled {
+    nm=$1; cmd=$2; input=$3; outext=$4
+    shift; shift; shift; shift
+    runcmd=$*
+    setup_todo $nm
+    echo $nm $todo_msg
+    output=`{echo $input | sed 's/\..*$/'^$outext^'/'}
+    if (! test -f ./test-fixtures/$input) {
+        echo $cmd $input^': no such file' ./test-fixtures/$input >[1=2]
+        do_exit
+    }
+    if (! test -f ./test-results/$cmd^-^$input^-expected) {
+        echo $cmd $input^': no such file' ./test-results/$cmd^-^$input^-expected >[1=2]
+        do_exit
+    }
+    rm -f ./test-fixtures/$output ./test-results/$cmd^-^$input^-actual ./test-results/$cmd^-^$input^-errors
+    if (! ./$cmd ./test-fixtures/$input >> ./test-results/$cmd^-^$input^-errors >[2=1]) {
+        echo 'The command ' >[1=2]
+        echo '    ' $cmd ./test-fixtures/$input >[1=2]
+        echo 'failed; should have succeeded' >[1=2]
+        cat ./test-results/$cmd^-^$input^-errors
+        do_exit
+    }
+    if (! $runcmd ./test-fixtures/$output >> ./test-results/$cmd^-^$input^-actual >>[2] ./test-results/$cmd^-^$input^-errors) {
+        echo 'The command ' >[1=2]
+        echo '    ' $runcmd ./test-fixtures/$output >[1=2]
+        echo 'failed; should have succeeded' >[1=2]
+        cat ./test-results/$cmd^-^$input^-errors
+        cat ./test-results/$cmd^-^$input^-actual
+        do_exit
+    }
+    if (! $GS_SPEC/bin/fuzzy_diff_regex ./test-results/$cmd^-^$input^-actual ./test-results/$cmd^-^$input^-expected >/dev/null) {
+        echo 'Incorrect output:' >[1=2]
+        echo '--- Any errors: ---' >[1=2]
+        cat ./test-results/$cmd^-^$input^-errors >[1=2]
+        echo '--- Diff: ---' >[1=2]
+        $GS_SPEC/bin/fuzzy_diff_regex ./test-results/$cmd^-^$input^-actual ./test-results/$cmd^-^$input^-expected >[1=2] || true
+        do_exit
+    }
+    true
+}
