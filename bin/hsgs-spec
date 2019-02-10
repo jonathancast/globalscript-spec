@@ -40,10 +40,6 @@ fn test_hsgs_variable_expressions {
     TEST_DIR=$GS_SPEC ok_diff_compiler '-- expression variables --' hsgs2hs variable-expression.hsgs .hs
 }
 
-fn test_hsgs_variable_bodies {
-    TEST_DIR=$GS_SPEC ok_diff_compiler '-- variable bodies --' hsgs2hs variable-body.hsgs .hs
-}
-
 fn test_hsgs_variable_binds {
     TEST_DIR=$GS_SPEC ok_diff_compiler '-- variable bind RHSs --' hsgs2hs variable-bind.hsgs .hs
 }
