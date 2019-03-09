@@ -51,3 +51,7 @@ fn test_hsgs_application_values {
 fn test_hsgs_variable_declarations {
     TEST_DIR=$GS_SPEC ok_diff_compiler '-- variable declarations --' hsgs2hs variable-decl.hsgs variable-decl.hs
 }
+
+fn test_undefined_function_hsgs {
+    TEST_DIR=$GS_SPEC ok_diff_compiled '-- undefined function --' hsgs2hs undefined-call.hsgs .hs runghc `{./test-ghcoptions}
+}
